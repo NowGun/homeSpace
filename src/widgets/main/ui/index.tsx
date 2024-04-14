@@ -4,20 +4,18 @@ import {useEffect, useState} from "react";
 
 const Main = () => {
     const now = new Date();
-    const time = dateFormat(now, "HH:MM:ss")
-
-    const [timeNow, setTimeNow] = useState(time)
+    const [timeNow, setTimeNow] = useState(dateFormat(now, "HH:MM:ss"))
 
     useEffect(() => {
-            const timer = setInterval(() => {
-                setTimeNow(time)
-            }, 1000)
+        const timer = setInterval(() => {
+            const now = new Date();
+            setTimeNow(dateFormat(now, "HH:MM:ss"));
+        }, 1000);
 
-            return () => {
-                clearInterval(timer)
-            }
-        },
-        [time]);
+        return () => {
+            clearInterval(timer);
+        };
+    }, []);
 
     return (
         <div className={styles.main}>
