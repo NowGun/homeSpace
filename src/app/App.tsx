@@ -1,7 +1,5 @@
-
 import "./index.scss";
-import "./index.css";
-import {Main} from "@/widgets/main";
+import {Main} from "@/pages/main";
 
 const App = () => {
     return (
