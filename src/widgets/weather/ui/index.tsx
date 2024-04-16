@@ -15,9 +15,9 @@ const Weather = () => {
             userDecisionTimeout: 5000,
         })
 
-    const getPathRequestWeather = coords?.latitude && coords?.longitude
-        ? `${import.meta.env.VITE_API_YANDEX_WEATHER_PATH}/v2/forecast?lat=${coords.latitude}&lon=${coords.longitude}&lang=ru_RU&limit=1&hours=false`
-        : `${import.meta.env.VITE_API_YANDEX_WEATHER_PATH}/v2/forecast?lat=51.741511&lon=36.140976&lang=ru_RU&limit=1&hours=false`
+    const getPathRequestWeather = coords?.latitude && coords.longitude
+        ? `/v2/forecast?lat=${coords.latitude}&lon=${coords.longitude}&lang=ru_RU&limit=1&hours=false`
+        : "/v2/forecast?lat=51.741511&lon=36.140976&lang=ru_RU&limit=1&hours=false"
 
     const {data, error, isLoading} =
         useSWR(getPathRequestWeather, fetcher)
