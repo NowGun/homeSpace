@@ -13,15 +13,20 @@ export default ({ mode }) => {
             https: https.createServer(),
             cors: true,
             proxy: {
-                '/v2': {
-                    target: 'https://api.weather.yandex.ru',
+                '/weather': {
+                    target: process.env.VITE_API_WEATHER_PATH,
                     changeOrigin: true,
                     secure: false,
                     headers: {
-                        "X-Yandex-API-Key": process.env.VITE_API_YANDEX_WEATHER_KEY,
+                        "key": process.env.VITE_API_WEATHER_KEY,
                     }
                 },
-            },
+                '/weather-icon': {
+                    target: process.env.VITE_API_WEATHER_ICON_PATH,
+                    changeOrigin: true,
+                    secure: false
+                }
+            }
         },
         resolve: {
             alias: {

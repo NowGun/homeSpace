@@ -5,11 +5,11 @@ const fetcher = async (url: string) => {
     return res?.data
 }
 
-const setYandexApiHeader = (token: string | null) => {
-    axios.defaults.headers.common['X-Yandex-API-Key'] = token ? token : ''
+const setWeatherApiHeader = (token: string | null) => {
+    axios.defaults.headers.common['key'] = token ? token : ''
 }
 
 export {
     fetcher,
-    setYandexApiHeader
+    setWeatherApiHeader
 }

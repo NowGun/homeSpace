@@ -7,8 +7,9 @@ declare module '*.module.scss' {
 }
 
 interface ImportMetaEnv {
-    VITE_API_YANDEX_WEATHER_KEY: string;
-    VITE_API_YANDEX_WEATHER_PATH: string;
+    VITE_API_WEATHER_KEY: string;
+    VITE_API_WEATHER_PATH: string;
+    VITE_API_WEATHER_ICON_PATH: string;
 }
 
 interface ImportMeta {
