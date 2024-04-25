@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import {fetcher} from "@/shared/api/utils/apiUtils.tsx";
+import {fetcher, setWeatherApiHeader} from "@/shared/api/utils/apiUtils.tsx";
 import {Badge} from "@/shared/ui/Badge";
 import styles from "./index.module.scss";
 import Skeleton from "react-loading-skeleton";
@@ -15,8 +15,10 @@ const Weather = () => {
         })
 
     const getPathRequestWeather = coords?.latitude && coords.longitude
-        ? `weather/current.json?q=${coords.latitude},${coords.longitude}&lang=ru`
-        : "weather/current.json?q=auto:ip&lang=ru"
+        ? `${import.meta.env.VITE_API_WEATHER_PATH}/current.json?q=${coords.latitude},${coords.longitude}&lang=ru`
+        : `${import.meta.env.VITE_API_WEATHER_PATH}/current.json?q=auto:ip&lang=ru`
+
+    setWeatherApiHeader(`${import.meta.env.VITE_API_WEATHER_KEY}`)
 
     const {data, error, isLoading} =
         useSWR(getPathRequestWeather, fetcher)

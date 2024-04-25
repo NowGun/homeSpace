@@ -11,22 +11,7 @@ export default ({ mode }) => {
     return defineConfig({
         server: {
             https: https.createServer(),
-            cors: true,
-            proxy: {
-                '/weather': {
-                    target: process.env.VITE_API_WEATHER_PATH,
-                    changeOrigin: true,
-                    secure: false,
-                    headers: {
-                        "key": process.env.VITE_API_WEATHER_KEY,
-                    }
-                },
-                '/weather-icon': {
-                    target: process.env.VITE_API_WEATHER_ICON_PATH,
-                    changeOrigin: true,
-                    secure: false
-                }
-            }
+            cors: true
         },
         resolve: {
             alias: {
